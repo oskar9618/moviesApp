@@ -5,14 +5,19 @@ import styles from './PosterMovie.styles';
 
 type PosterMovieProps = {
   movie: Movie;
+  height?: number;
+  width?: number;
 };
 
-export default function PosterMovie({movie}: PosterMovieProps) {
+export default function PosterMovie({
+  movie,
+  height = 420,
+  width = 300,
+}: PosterMovieProps) {
   const posterMovie = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   return (
-    // eslint-disable-next-line react-native/no-inline-styles
-    <View style={{width: 300, height: 400}}>
+    <View style={{...styles.container, width, height}}>
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={{uri: posterMovie}} />
       </View>

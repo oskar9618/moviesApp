@@ -1,6 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 8,
+    marginHorizontal: 8,
+  },
   imageContainer: {
     flex: 1,
     shadowColor: '#000',
