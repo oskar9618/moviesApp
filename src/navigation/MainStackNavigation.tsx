@@ -1,8 +1,13 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {HomeScreen, MovieDetailScreen} from '../screens';
+import {Movie} from '../types/mobiDB.interface';
 
-const Stack = createStackNavigator();
+export type NavigationParams = {
+  Home: undefined;
+  MovieDetail: Movie;
+};
+const Stack = createStackNavigator<NavigationParams>();
 
 const MainStackNavigator = () => {
   return (
