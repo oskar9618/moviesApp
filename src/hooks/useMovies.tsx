@@ -25,21 +25,26 @@ export default function useMovies() {
     const topRateMovies = await movieDBApi.get<MovieResponse>('/top_rated');
     const upcomingMovies = await movieDBApi.get<MovieResponse>('/upcoming');
 
-    const movieResponse = await Promise.all([
-      nowPlayingMovies,
-      popularMovies,
-      topRateMovies,
-      upcomingMovies,
-    ]);
+    try {
+      const movieResponse = await Promise.all([
+        nowPlayingMovies,
+        popularMovies,
+        topRateMovies,
+        upcomingMovies,
+      ]);
 
-    setMovies({
-      nowPlayingMovies: movieResponse[0].data.results,
-      popularMovies: movieResponse[1].data.results,
-      topRateMovies: movieResponse[2].data.results,
-      upcomingMovies: movieResponse[3].data.results,
-    });
+      setMovies({
+        nowPlayingMovies: movieResponse[0].data.results,
+        popularMovies: movieResponse[1].data.results,
+        topRateMovies: movieResponse[2].data.results,
+        upcomingMovies: movieResponse[3].data.results,
+      });
 
-    setIsLoading(false);
+      setIsLoading(false);
+    } catch (error) {
+      console.log('err', error);
+      setIsLoading(false);
+    }
   };
 
   return {

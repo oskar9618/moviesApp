@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
     top: 50,
     left: 15,
     elevation: 5,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    borderRadius: 15,
   },
 });
 
